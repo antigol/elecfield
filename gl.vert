@@ -1,4 +1,4 @@
-#version 130
+#version 420
 in vec3 vertex;
 uniform mat4 matrixp;
 uniform mat4 matrixv;

@@ -1,4 +1,4 @@
-#version 130
+#version 420
 in vec3 position;
 
 out vec4 color;
@@ -18,15 +18,15 @@ void main(void)
             return;
         } else {
             const float cst = 4.0 * 3.14159265 * 8.854187e-12;
-            vec3 e = normalize(r) * (charges_value[i] / (cst * dot(r, r)));
+            vec3 e = normalize(r) * charges_value[i] / (cst * dot(r, r));
             sum += e;
         }
     }
 
     float intencity = length(sum);
 
-    float a = pow(sin(log(intencity + 0.1) * 5.0), 6.0);
-    color = fixed_color * min(1.0, a);
+    float a = sin(log(intencity + 0.2) * 10.0);
+    color = fixed_color * a*a, 1.0;
 
     float minimum = 1e5;
     if (intencity < minimum) {
