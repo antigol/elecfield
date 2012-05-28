@@ -9,12 +9,12 @@ uniform float charges_value[4];
 
 void main(void)
 {
-    vec3 sum = vec3(0, 0, 0);
+    vec3 sum = vec3(0.0, 0.0, 0.0);
 
     for (int i = 0; i < 4; ++i) {
         vec3 r = position - charges_position[i];
-        if (dot(r, r) == 0) {
-            color = vec4(0, 0, 0, 0);
+        if (dot(r, r) == 0.0) {
+            color = vec4(0.0, 0.0, 0.0, 0.0);
             return;
         } else {
             const float cst = 4.0 * 3.14159265 * 8.854187e-12;
@@ -25,7 +25,7 @@ void main(void)
 
     float intencity = length(sum);
 
-    float a = pow(sin(log(intencity + 0.2) * 5.0), 6.0);
+    float a = pow(sin(log(intencity + 0.1) * 5.0), 6.0);
     color = fixed_color * min(1.0, a);
 
     float minimum = 1e5;

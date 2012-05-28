@@ -47,6 +47,7 @@ private:
     QVector<GLfloat> chargesVal;
 
     QTime time;
+    float lastTime;
     float angle;
     int fps;
 };

@@ -7,6 +7,7 @@ GLWidget::GLWidget(QWidget *parent)
     setAttribute(Qt::WA_OpaquePaintEvent);
     setAutoFillBackground(false);
 
+    lastTime = 0.0;
     time.start();
     startTimer(0);
 }
@@ -129,19 +130,18 @@ void GLWidget::paintEvent(QPaintEvent *e)
     painter.setFont(QFont("Helvetica", 8));
     painter.drawText(QRectF(10, 30, 210, 50), "press C to change object shape\npress Space to reinitialize charges");
 
-    static int i = 240;
-    if (i-- == 0) {
-        i = 240;
-        painter.setFont(QFont("Helvetica", 30));
-        painter.drawText(rect(), Qt::AlignCenter, tr("Horrible Koala"));
-    }
-
     painter.end();
 }
 
 void GLWidget::timerEvent(QTimerEvent *)
 {
-    float dt = float(time.restart());
+    float t = float(time.elapsed());
+    if (t - lastTime == 0.0)
+        return;
+
+    float dt = t - lastTime;
+    lastTime = t;
+
     for (int i = 0; i < 4; ++i) {
         if (chargesPos[i].lengthSquared() > 100.0)
             initializeCharge(i);
