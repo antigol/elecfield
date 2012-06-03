@@ -6,7 +6,7 @@
 
 QT       += core gui opengl
 
-TARGET = champElec
+TARGET = elecfield
 TEMPLATE = app
 
 
