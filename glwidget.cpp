@@ -1,8 +1,8 @@
 #include "glwidget.h"
 #include <QDebug>
 
-GLWidget::GLWidget(QWidget *parent)
-    : QGLWidget(parent), cube(0), sphere(0), current(0)
+GLWidget::GLWidget(const QGLFormat & format, QWidget *parent)
+    : QGLWidget(format, parent), cube(0), sphere(0), current(0)
 {
     setAttribute(Qt::WA_OpaquePaintEvent);
     setAutoFillBackground(false);
