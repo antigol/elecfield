@@ -4,7 +4,12 @@ GLShape::GLShape(const QGLContext *context) :
     vbo(QGLBuffer::VertexBuffer),
     ibo(QGLBuffer::IndexBuffer)
 {
-    initializeGLFunctions(context);
+	initializeGLFunctions(context);
+}
+
+GLShape::~GLShape()
+{
+
 }
 
 GLenum GLShape::type() const

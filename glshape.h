@@ -8,6 +8,7 @@ class GLShape : protected QGLFunctions
 {
 public:
     GLShape(const QGLContext *context = 0);
+	virtual ~GLShape();
 
     virtual GLenum type() const;
     virtual int offset() const;
